@@ -17,6 +17,7 @@ import java.io.PrintWriter;
 public class AddServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        //         move to separate private method and call it
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("views/add.jsp");
         requestDispatcher.forward(req,resp);
     }
@@ -25,11 +26,15 @@ public class AddServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String name = req.getParameter("name");
         String password = req.getParameter("pass");
+//         move 3 lines to another method,
+//         better to create class with name like UserService and create method addUser(name, password)
         User user = new User (name,password);
         Model model = Model.getInstance();
         model.add(user);
-
+        
         req.setAttribute("userName",name);
+//         do not call doGet from doPost, it is confusing
+//         move to separate private method and call it
         doGet(req,resp);
     }
 }

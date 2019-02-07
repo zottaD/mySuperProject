@@ -16,6 +16,8 @@
     <h1>GIVE ME YOUR NAME AND PASSWORD!</h1>
 </div>
 <div class="w3-container w3-padding">
+<!-- you can get variable from servlet ${userName} instead of  request.getAttribute("userName")  -->
+<!--  it is better not to use elements with % on jsp except "page" on the top of a jsp   -->
     <%
         if (request.getAttribute("userName") != null) {
             out.println("<p>User' " + request.getAttribute("userName") + " 'added!</p>");

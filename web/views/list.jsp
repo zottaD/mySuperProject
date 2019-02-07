@@ -21,7 +21,7 @@
 <div class="w3-container w3-light-blue">
     <h2>Users</h2>
 </div>
-
+<!-- same issue with % , have a look about jstl -->
     <%
         List<String> names = (List<String>) request.getAttribute("userNames");
 
